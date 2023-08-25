@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:masterapp_/pages/contact_add.dart';
 import 'package:masterapp_/person.dart';
 
 class Home extends StatefulWidget {
@@ -10,6 +11,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final personList = Person.personList();
+  
 
   @override
   Widget build(BuildContext context) {
@@ -40,14 +42,14 @@ class _HomeState extends State<Home> {
               icon: const Icon(Icons.more_vert_rounded))
         ],
       ),
-      body: Container(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          print("Add button pressed");
-        },
-        tooltip: "Add Contact",
-        child: const Icon(Icons.add),
+      body: const Center(
       ),
+      floatingActionButton: FloatingActionButton(onPressed:(){print("Add buton basıldı");
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const ContactAdd()),);},
+        
+        tooltip:"Add Contact",
+        child:const Icon(Icons.add),
+        ),
     );
   }
 }
