@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:masterapp_/person.dart';
+import 'package:masterapp_/pages/homePages.dart';
+// import 'package:masterapp_/person.dart';
 
 class ContactAdd extends StatefulWidget {
   const ContactAdd({Key? key}) : super(key: key);
@@ -9,7 +10,14 @@ class ContactAdd extends StatefulWidget {
 }
 
 class _ContactAddState extends State<ContactAdd> {
-  final personList = Person.personList();
+  var tfContactName =
+      TextEditingController(); //tf => textfield          burada kaldım  dk: 39.24
+  var tfContactLastName = TextEditingController();
+  var tfContactNum = TextEditingController();
+  var tfContactMail = TextEditingController();
+  var tfContactCompany = TextEditingController();
+
+  // final personList = Person.personList();
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +33,16 @@ class _ContactAddState extends State<ContactAdd> {
           iconSize: 18,
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            print("Geri tuşuna basıldı");
+            print("Back buton basıldı");
+            print(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Home()),
+            );
+            /*flutter: Edit buton basıldı
+flutter: ContactInfo(state: _ContactInfoState#2b59b) */
+/* flutter: Back buton basıldı
+flutter: ContactAdd(state: _ContactAddState#ee0f8) */
           },
         ),
         actions: [

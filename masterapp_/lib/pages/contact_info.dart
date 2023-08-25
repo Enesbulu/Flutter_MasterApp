@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:masterapp_/person.dart';
+import 'package:masterapp_/pages/contact_add.dart';
+import 'package:masterapp_/pages/homePages.dart';
 
 class ContactInfo extends StatefulWidget {
   const ContactInfo({Key? key}) : super(key: key);
@@ -9,7 +10,7 @@ class ContactInfo extends StatefulWidget {
 }
 
 class _ContactInfoState extends State<ContactInfo> {
-  final personList = Person.personList();
+  // final personList = Person.personList();
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,11 @@ class _ContactInfoState extends State<ContactInfo> {
           color: Colors.blueGrey.shade800,
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            print("Geri tuşuna basıldı");
+            print("Back buton basıldı");
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Home()),
+            );
           },
         ),
         //Delete Icon Area
@@ -57,7 +62,12 @@ class _ContactInfoState extends State<ContactInfo> {
           IconButton(
               iconSize: 18,
               onPressed: () {
-                print("Edit e basıldı.");
+                print("Edit buton basıldı");
+                print(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ContactAdd()),
+                );
               },
               icon: const Icon(Icons.edit))
         ],
@@ -77,7 +87,7 @@ class _ContactInfoState extends State<ContactInfo> {
                 )
               ],
             ),
-            Spacer(
+            const Spacer(
               flex: 10,
             ),
             //Name Text Area
