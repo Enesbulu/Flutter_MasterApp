@@ -1,3 +1,6 @@
+// ignore: file_names
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:masterapp_/person.dart';
 
@@ -10,9 +13,6 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final personList = Person.personList();
-  
-  get 
-   => null;
 
   @override
   Widget build(BuildContext context) {
@@ -43,18 +43,13 @@ class _HomeState extends State<Home> {
               icon: const Icon(Icons.more_vert_rounded))
         ],
       ),
-      body: const Center(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [floatingActionButton: FloatingActionButton(
+      body: Container(),
+      floatingActionButton: FloatingActionButton(
         onPressed: () {
-          print("Kişi ekle basıldı.");
+          print("Add button pressed");
         },
-        child:  Icon(Icons.add),
-      ),
-            ],
-          ),
-        ),
+        tooltip: "Add Contact",
+        child: const Icon(Icons.add),
       ),
     );
   }
