@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:masterapp_/pages/homePages.dart';
+import 'package:masterapp_/pages/contact_info.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primaryColor: Colors.indigo),
       // theme: ThemeData(primaryColorDark: Color.fromARGB(161, 126, 47, 28)),
-      home: const Home(),
+      home: const ContactInfo(),
     );
   }
 }
