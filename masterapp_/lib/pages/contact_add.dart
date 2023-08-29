@@ -1,28 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:masterapp_/pages/contact_info.dart';
-
 import 'package:masterapp_/pages/homePages.dart';
 
 class ContactAdd extends StatefulWidget {
-  ContactAdd({Key? key}) : super(key: key);
-  late String name;
+  const ContactAdd({Key? key}) : super(key: key);
+  // late String name;
+
   @override
   State<ContactAdd> createState() => _ContactAddState();
 }
 
 class _ContactAddState extends State<ContactAdd> {
   var tfContactName = TextEditingController();
-  // var tfContactLastname = TextEditingController();
-  // var tfContactNum = TextEditingController();
-  // var tfContactMail = TextEditingController();
-  // var tfContactCompany = TextEditingController();
+  var tfContactLastname = TextEditingController();
+  var tfContactNum = TextEditingController();
+  var tfContactMail = TextEditingController();
+  var tfContactCompany = TextEditingController();
 
-  Future<void> Save(String name_) async {
-    print("$name_  eklendi");
+  Future<void> Save(
+      {required String name_,
+      required String lastname_,
+      required String num_,
+      String mail_ = "",
+      String company_ = ""}) async {
+    print("$name_  $lastname_ $num_ $mail_ $company_  eklendi");
+    // Person person;
+    // person.name=
     Navigator.push(
-      context as BuildContext,
+      context,
       MaterialPageRoute(
-        builder: (context) => ContactInfo(name: name_),
+        builder: (context) => ContactInfo(
+          nameInfo: name_,
+          lastnameInfo: lastname_,
+          numInfo: num_,
+          mailInfo: mail_,
+          companyInfo: company_,
+        ),
       ),
     ); // Navigate edilen class ın parametresi hazır olduğunda aktif edilebilecek bir kod
   }
@@ -61,7 +74,12 @@ class _ContactAddState extends State<ContactAdd> {
               ),
               onPressed: () {
                 print("save basıldı");
-                Save(tfContactName.text);
+                Save(
+                    name_: tfContactName.text,
+                    lastname_: tfContactLastname.text,
+                    num_: tfContactNum.text,
+                    mail_: tfContactMail.text,
+                    company_: tfContactCompany.text);
               },
               child: const Text(
                 'SAVE',
@@ -90,8 +108,9 @@ class _ContactAddState extends State<ContactAdd> {
           //LastName TextField
           Padding(
             padding: textFiledEdgeInsets,
-            child: const TextField(
-              decoration: InputDecoration(
+            child: TextField(
+              controller: tfContactLastname,
+              decoration: const InputDecoration(
                 hintText: "Last Name",
                 hoverColor: Color.fromARGB(232, 3, 63, 91),
               ),
@@ -100,8 +119,9 @@ class _ContactAddState extends State<ContactAdd> {
           //Phone TextField
           Padding(
             padding: textFiledEdgeInsets,
-            child: const TextField(
-              decoration: InputDecoration(
+            child: TextField(
+              controller: tfContactNum,
+              decoration: const InputDecoration(
                 hintText: "Phone (+90 0500 000 00 00) ",
                 hoverColor: Color.fromARGB(232, 3, 63, 91),
               ),
@@ -110,8 +130,9 @@ class _ContactAddState extends State<ContactAdd> {
           //Email TextField
           Padding(
             padding: textFiledEdgeInsets,
-            child: const TextField(
-              decoration: InputDecoration(
+            child: TextField(
+              controller: tfContactMail,
+              decoration: const InputDecoration(
                 hintText: "Email",
                 hoverColor: Color.fromARGB(232, 3, 63, 91),
               ),
@@ -120,9 +141,10 @@ class _ContactAddState extends State<ContactAdd> {
           //Company TextField
           Padding(
             padding: textFiledEdgeInsets,
-            child: const Expanded(
+            child: Expanded(
               child: TextField(
-                decoration: InputDecoration(
+                controller: tfContactCompany,
+                decoration: const InputDecoration(
                   hintText: "Company",
                   hoverColor: Color.fromARGB(232, 3, 63, 91),
                 ),

@@ -4,31 +4,29 @@ import 'package:masterapp_/pages/homePages.dart';
 
 class ContactInfo extends StatefulWidget {
   // Person person;
-  late String name;
+  late String nameInfo;
+  late String lastnameInfo;
+  late String numInfo;
+  late String mailInfo;
+  late String companyInfo;
 
-  ContactInfo({Key? key, required this.name}) : super(key: key);
+  ContactInfo(
+      {Key? key,
+      required this.nameInfo,
+      required this.lastnameInfo,
+      required this.numInfo,
+      required this.mailInfo,
+      required this.companyInfo})
+      : super(key: key);
 
   @override
   State<ContactInfo> createState() => _ContactInfoState();
 }
 
 class _ContactInfoState extends State<ContactInfo> {
-  // var tfpersonName = TextEditingController();
-  // var tfpersonLastname = TextEditingController();
-  // var tfpersonNum = TextEditingController();
-  // var tfpersonMail = TextEditingController();
-  // var tfpersonCompany = TextEditingController();
-  // late Person tfPerson;
-
   @override
   void initState() {
     super.initState();
-    // var person = widget.person;
-    // tfpersonName.text = person.name;
-    // tfpersonLastname.text = person.lastname;
-    // tfpersonNum.text = person.num;
-    // tfpersonMail.text = person.mail;
-    // tfpersonCompany.text = person.company;
   }
 
   @override
@@ -93,7 +91,7 @@ class _ContactInfoState extends State<ContactInfo> {
         // color: Colors.blueGrey,
         child: Column(
           children: [
-            const Spacer(flex: 20),
+            const Spacer(flex: 30),
             //Image Area
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -107,24 +105,24 @@ class _ContactInfoState extends State<ContactInfo> {
               flex: 10,
             ),
             //Name Text Area
-            Text(widget.name
-                //"<Contact Name>"
-                // tfpersonName.text,
-                // style: const TextStyle(
-                //     fontSize: 20,
-                //     // fontFamily: "bold",
-                //     fontWeight: FontWeight.w600),
-                ),
+            Text(
+              widget.nameInfo + " " + widget.lastnameInfo,
+              style: const TextStyle(
+                  fontSize: 20,
+                  // fontFamily: "bold",
+                  fontWeight: FontWeight.w600),
+            ),
             const Spacer(
-              flex: 50,
+              flex: 20,
             ),
             //Number Area
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "+90 500 000 00 00",
-                  style: TextStyle(color: Colors.cyan, fontSize: 17),
+                  widget.numInfo,
+                  // "+90 500 000 00 00",
+                  style: const TextStyle(color: Colors.cyan, fontSize: 17),
                 ),
               ],
             ),
