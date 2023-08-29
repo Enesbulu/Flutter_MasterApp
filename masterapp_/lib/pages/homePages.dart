@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:masterapp_/pages/contact_add.dart';
-import 'package:masterapp_/pages/contact_info.dart';
 import 'package:masterapp_/person.dart';
 
 // ignore: must_be_immutable
@@ -16,6 +13,7 @@ class _HomeState extends State<Home> {
   // final personList = Person.personList();
   bool isSearch = false;
   String searchQuery = "";
+  late Person person_;
 
   Future<List<Person>> viewAllContact() async {
     var personList = <Person>[];
@@ -127,12 +125,7 @@ class _HomeState extends State<Home> {
                   padding: const EdgeInsets.only(right: 40, left: 40, top: 5),
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ContactInfo(),
-                        ),
-                      );
+                      // Navigator.push(context,MaterialPageRoute(builder: (context) => ContactInfo(person: person),),);
                     },
                     child: Card(
                       child: SizedBox(
@@ -194,10 +187,8 @@ class _HomeState extends State<Home> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           print("Add buton basıldı");
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const ContactAdd()),
-          );
+          // Navigator.push(context,MaterialPageRoute(builder: (context) => ContactAdd()),
+          // );
         },
         tooltip: "Add Contact",
         child: const Icon(Icons.add),
@@ -225,25 +216,3 @@ class SearchPage extends StatelessWidget {
     );
   }
 }
-/*
-AppBar _buildAppBar() {
-  return AppBar(
-    backgroundColor: Colors.blue.shade200,
-    elevation: 10,
-    title: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        const Icon(
-          Icons.menu,
-          color: Colors.blueGrey,
-          size: 25,
-        ),
-        Container(
-          height: 25,
-          width: 30,
-          child: Column(children: []),
-        ),
-      ],
-    ),
-  );
-}*/

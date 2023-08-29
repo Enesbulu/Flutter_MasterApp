@@ -1,16 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:masterapp_/pages/contact_add.dart';
 import 'package:masterapp_/pages/homePages.dart';
+// import 'package:masterapp_/person.dart';
 
 class ContactInfo extends StatefulWidget {
-  const ContactInfo({Key? key}) : super(key: key);
+  // Person person;
+  late String name;
+
+  ContactInfo({Key? key, required this.name}) : super(key: key);
 
   @override
   State<ContactInfo> createState() => _ContactInfoState();
 }
 
 class _ContactInfoState extends State<ContactInfo> {
-  // final personList = Person.personList();
+  // var tfpersonName = TextEditingController();
+  // var tfpersonLastname = TextEditingController();
+  // var tfpersonNum = TextEditingController();
+  // var tfpersonMail = TextEditingController();
+  // var tfpersonCompany = TextEditingController();
+  // late Person tfPerson;
+
+  @override
+  void initState() {
+    super.initState();
+    // var person = widget.person;
+    // tfpersonName.text = person.name;
+    // tfpersonLastname.text = person.lastname;
+    // tfpersonNum.text = person.num;
+    // tfpersonMail.text = person.mail;
+    // tfpersonCompany.text = person.company;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,10 +83,7 @@ class _ContactInfoState extends State<ContactInfo> {
               onPressed: () {
                 print("Edit buton basıldı");
                 print(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const ContactAdd()),
-                );
+                // Navigator.push(context,MaterialPageRoute(builder: (context) => ContactUpdate(person: tfPerson,),),);
               },
               icon: const Icon(Icons.edit))
         ],
@@ -91,13 +107,14 @@ class _ContactInfoState extends State<ContactInfo> {
               flex: 10,
             ),
             //Name Text Area
-            const Text(
-              "<Contact Name>",
-              style: TextStyle(
-                  fontSize: 20,
-                  // fontFamily: "bold",
-                  fontWeight: FontWeight.w600),
-            ),
+            Text(widget.name
+                //"<Contact Name>"
+                // tfpersonName.text,
+                // style: const TextStyle(
+                //     fontSize: 20,
+                //     // fontFamily: "bold",
+                //     fontWeight: FontWeight.w600),
+                ),
             const Spacer(
               flex: 50,
             ),

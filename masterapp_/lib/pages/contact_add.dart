@@ -1,31 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:masterapp_/pages/contact_info.dart';
+
 import 'package:masterapp_/pages/homePages.dart';
-// import 'package:masterapp_/person.dart';
 
 class ContactAdd extends StatefulWidget {
-  const ContactAdd({Key? key}) : super(key: key);
-
+  ContactAdd({Key? key}) : super(key: key);
+  late String name;
   @override
   State<ContactAdd> createState() => _ContactAddState();
 }
 
 class _ContactAddState extends State<ContactAdd> {
-  var tfContactName =
-      TextEditingController(); //tf => textfield          burada kaldım  dk: 39.24
-  var tfContactLastName = TextEditingController();
-  var tfContactNum = TextEditingController();
-  var tfContactMail = TextEditingController();
-  var tfContactCompany = TextEditingController();
+  var tfContactName = TextEditingController();
+  // var tfContactLastname = TextEditingController();
+  // var tfContactNum = TextEditingController();
+  // var tfContactMail = TextEditingController();
+  // var tfContactCompany = TextEditingController();
 
-  // final personList = Person.personList();
+  Future<void> Save(String name_) async {
+    print("$name_  eklendi");
+    Navigator.push(
+      context as BuildContext,
+      MaterialPageRoute(
+        builder: (context) => ContactInfo(name: name_),
+      ),
+    ); // Navigate edilen class ın parametresi hazır olduğunda aktif edilebilecek bir kod
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    EdgeInsets textFiledEdgeInsets = const EdgeInsets.only(
-        left: 20,
-        right: 20,
-        bottom:
-            20); //textField nesnelerinin paddin değerlerini standartlaştırmak için oluşturulmuş değişken.
+    //textField nesnelerinin paddin değerlerini standartlaştırmak için oluşturulmuş değişken.
+    EdgeInsets textFiledEdgeInsets =
+        const EdgeInsets.only(left: 20, right: 20, bottom: 20);
     return Scaffold(
       appBar: AppBar(
         title: const Text("Add Contact"),
@@ -39,10 +50,6 @@ class _ContactAddState extends State<ContactAdd> {
               context,
               MaterialPageRoute(builder: (context) => Home()),
             );
-            /*flutter: Edit buton basıldı
-flutter: ContactInfo(state: _ContactInfoState#2b59b) */
-/* flutter: Back buton basıldı
-flutter: ContactAdd(state: _ContactAddState#ee0f8) */
           },
         ),
         actions: [
@@ -54,6 +61,7 @@ flutter: ContactAdd(state: _ContactAddState#ee0f8) */
               ),
               onPressed: () {
                 print("save basıldı");
+                Save(tfContactName.text);
               },
               child: const Text(
                 'SAVE',
@@ -66,20 +74,20 @@ flutter: ContactAdd(state: _ContactAddState#ee0f8) */
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          // const Spacer(
-          //   flex: 50,
-          // ),
+          //Name TextField
           Padding(
             padding: textFiledEdgeInsets,
-            child: const Expanded(
+            child: Expanded(
               child: TextField(
-                decoration: InputDecoration(
+                controller: tfContactName,
+                decoration: const InputDecoration(
                   hintText: "Name",
                   hoverColor: Color.fromARGB(232, 17, 143, 202),
                 ),
               ),
             ),
           ),
+          //LastName TextField
           Padding(
             padding: textFiledEdgeInsets,
             child: const TextField(
@@ -89,6 +97,7 @@ flutter: ContactAdd(state: _ContactAddState#ee0f8) */
               ),
             ),
           ),
+          //Phone TextField
           Padding(
             padding: textFiledEdgeInsets,
             child: const TextField(
@@ -98,6 +107,7 @@ flutter: ContactAdd(state: _ContactAddState#ee0f8) */
               ),
             ),
           ),
+          //Email TextField
           Padding(
             padding: textFiledEdgeInsets,
             child: const TextField(
@@ -107,6 +117,7 @@ flutter: ContactAdd(state: _ContactAddState#ee0f8) */
               ),
             ),
           ),
+          //Company TextField
           Padding(
             padding: textFiledEdgeInsets,
             child: const Expanded(
@@ -118,9 +129,6 @@ flutter: ContactAdd(state: _ContactAddState#ee0f8) */
               ),
             ),
           ),
-          // Spacer(
-          //   flex: 10,
-          // )
         ],
       ),
     );

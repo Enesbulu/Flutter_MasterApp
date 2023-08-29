@@ -3,6 +3,9 @@ class Person {
   late String name;
   late String lastname;
   late String num;
+  late String mail;
+  late String company;
+
   // late String image;
   late bool isDelete;
 
@@ -12,6 +15,8 @@ class Person {
     required this.lastname,
     this.isDelete = false,
     required this.num,
+    this.mail = "",
+    this.company = "",
   });
 
   // static List<Person> personList() {
