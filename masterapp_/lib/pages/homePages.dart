@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:masterapp_/pages/contact_add.dart';
+import 'package:masterapp_/pages/contact_info.dart';
 import 'package:masterapp_/person.dart';
 
 // ignore: must_be_immutable
 class Home extends StatefulWidget {
-  // Home({Key? key}) : super(key: key);
+  late Person allContact;
+  // Home({Key? key, required this.allContact}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -17,7 +20,6 @@ class _HomeState extends State<Home> {
 
   Future<List<Person>> viewAllContact() async {
     var personList = <Person>[];
-
     var k1 =
         Person(id: 0, name: "Mehmet", lastname: "Seyran", num: "+905000000000");
     var k2 =
@@ -28,15 +30,11 @@ class _HomeState extends State<Home> {
         Person(id: 3, name: "Nuray", lastname: "Genç", num: "+905003333333");
     var k5 =
         Person(id: 4, name: "Nil", lastname: "Serin", num: "+905004444444");
-    var k6 =
-        Person(id: 5, name: "Bengü", lastname: "Kolay", num: "+905005555555");
-
     personList.add(k1);
     personList.add(k2);
     personList.add(k3);
     personList.add(k4);
     personList.add(k5);
-    personList.add(k6);
 
     return personList;
   }
@@ -125,7 +123,12 @@ class _HomeState extends State<Home> {
                   padding: const EdgeInsets.only(right: 40, left: 40, top: 5),
                   child: GestureDetector(
                     onTap: () {
-                      // Navigator.push(context,MaterialPageRoute(builder: (context) => ContactInfo(person: person),),);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ContactInfo(person: person),
+                        ),
+                      );
                     },
                     child: Card(
                       child: SizedBox(
@@ -139,12 +142,14 @@ class _HomeState extends State<Home> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
+                                    //Name Text
                                     Text(
                                       person.name,
                                       style: const TextStyle(
                                           fontWeight: FontWeight.bold),
                                     ),
                                     const Padding(padding: EdgeInsets.all(15)),
+                                    //LastName Text
                                     Text(
                                       person.lastname,
                                       style: const TextStyle(
@@ -154,6 +159,7 @@ class _HomeState extends State<Home> {
                                 ),
                                 Row(
                                   children: [
+                                    //Nun area
                                     Text(
                                       person.num,
                                       style: const TextStyle(fontSize: 12),
@@ -164,7 +170,7 @@ class _HomeState extends State<Home> {
                             ),
                             IconButton(
                               onPressed: () {
-                                deletePerson(person.id);
+                                deletePerson(person.id!);
                               },
                               icon: const Icon(
                                 Icons.delete,
@@ -184,11 +190,12 @@ class _HomeState extends State<Home> {
           }
         },
       ),
+      //Kişi Ekleme butonu
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           print("Add buton basıldı");
-          // Navigator.push(context,MaterialPageRoute(builder: (context) => ContactAdd()),
-          // );
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => ContactAdd()));
         },
         tooltip: "Add Contact",
         child: const Icon(Icons.add),

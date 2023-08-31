@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:masterapp_/pages/contact_update.dart';
 import 'package:masterapp_/pages/homePages.dart';
-// import 'package:masterapp_/person.dart';
+import 'package:masterapp_/person.dart';
 
 class ContactInfo extends StatefulWidget {
-  // Person person;
-  late String nameInfo;
-  late String lastnameInfo;
-  late String numInfo;
-  late String mailInfo;
-  late String companyInfo;
+  late Person person;
+  // late String nameInfo;
+  // late String lastnameInfo;
+  // late String numInfo;
+  // late String mailInfo;
+  // late String companyInfo;
 
   ContactInfo(
       {Key? key,
-      required this.nameInfo,
-      required this.lastnameInfo,
-      required this.numInfo,
-      required this.mailInfo,
-      required this.companyInfo})
+      // required this.nameInfo,
+      // required this.lastnameInfo,
+      // required this.numInfo,
+      // required this.mailInfo,
+      // required this.companyInfo
+      required this.person})
       : super(key: key);
 
   @override
@@ -81,7 +83,14 @@ class _ContactInfoState extends State<ContactInfo> {
               onPressed: () {
                 print("Edit buton basıldı");
                 print(context);
-                // Navigator.push(context,MaterialPageRoute(builder: (context) => ContactUpdate(person: tfPerson,),),);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ContactUpdate(
+                      person: widget.person,
+                    ),
+                  ),
+                );
               },
               icon: const Icon(Icons.edit))
         ],
@@ -106,7 +115,7 @@ class _ContactInfoState extends State<ContactInfo> {
             ),
             //Name Text Area
             Text(
-              widget.nameInfo + " " + widget.lastnameInfo,
+              widget.person.name + " " + widget.person.lastname,
               style: const TextStyle(
                   fontSize: 20,
                   // fontFamily: "bold",
@@ -120,7 +129,7 @@ class _ContactInfoState extends State<ContactInfo> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  widget.numInfo,
+                  widget.person.num,
                   // "+90 500 000 00 00",
                   style: const TextStyle(color: Colors.cyan, fontSize: 17),
                 ),

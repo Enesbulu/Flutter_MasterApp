@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:masterapp_/pages/contact_info.dart';
 import 'package:masterapp_/pages/homePages.dart';
+import 'package:masterapp_/person.dart';
 
 class ContactAdd extends StatefulWidget {
   const ContactAdd({Key? key}) : super(key: key);
@@ -24,18 +25,24 @@ class _ContactAddState extends State<ContactAdd> {
       String mail_ = "",
       String company_ = ""}) async {
     print("$name_  $lastname_ $num_ $mail_ $company_  eklendi");
-    // Person person;
-    // person.name=
+
+    Person person = Person(
+        name: tfContactName.text,
+        lastname: tfContactLastname.text,
+        num: tfContactNum.text);
+    person.company = tfContactCompany.text;
+    person.mail = tfContactMail.text;
+
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => ContactInfo(
-          nameInfo: name_,
-          lastnameInfo: lastname_,
-          numInfo: num_,
-          mailInfo: mail_,
-          companyInfo: company_,
-        ),
+            // nameInfo: name_,
+            // lastnameInfo: lastname_,
+            // numInfo: num_,
+            // mailInfo: mail_,
+            // companyInfo: company_,
+            person: person),
       ),
     ); // Navigate edilen class ın parametresi hazır olduğunda aktif edilebilecek bir kod
   }
