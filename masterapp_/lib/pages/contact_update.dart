@@ -12,12 +12,6 @@ class ContactUpdate extends StatefulWidget {
 }
 
 class _ContactUpdateState extends State<ContactUpdate> {
-  var tfContactName = TextEditingController(); //tf => textfield
-  var tfContactLastName = TextEditingController();
-  var tfContactNum = TextEditingController();
-  var tfContactMail = TextEditingController();
-  var tfContactCompany = TextEditingController();
-
   Future<void> personUpdate(
       // int personId,
       String tfContactName,
@@ -32,6 +26,22 @@ class _ContactUpdateState extends State<ContactUpdate> {
         builder: (context) => Home(),
       ),
     );
+  }
+
+  late TextEditingController tfName;
+  late TextEditingController tfLastname;
+  late TextEditingController tfNum;
+  late TextEditingController tfMail;
+  late TextEditingController tfCompany;
+
+  @override
+  void initState() {
+    super.initState();
+    tfName = TextEditingController(text: widget.person.name);
+    tfLastname = TextEditingController(text: widget.person.lastname);
+    tfNum = TextEditingController(text: widget.person.num);
+    tfMail = TextEditingController(text: widget.person.mail);
+    tfCompany = TextEditingController(text: widget.person.company);
   }
 
   @override
@@ -65,12 +75,8 @@ class _ContactUpdateState extends State<ContactUpdate> {
               ),
               onPressed: () {
                 print("save basıldı");
-                personUpdate(
-                    tfContactName.text,
-                    tfContactLastName.text,
-                    tfContactNum.text,
-                    tfContactMail.text,
-                    tfContactCompany.text);
+                personUpdate(tfName.text, tfLastname.text, tfNum.text,
+                    tfMail.text, tfCompany.text);
               },
               child: Icon(
                 Icons.check,
@@ -88,9 +94,9 @@ class _ContactUpdateState extends State<ContactUpdate> {
             padding: textFiledEdgeInsets,
             child: Expanded(
               child: TextField(
-                controller: tfContactName,
+                controller: tfName,
                 decoration: const InputDecoration(
-                  // hintText: "Name",
+                  hintText: "Name",
                   hoverColor: Color.fromARGB(232, 17, 143, 202),
                 ),
               ),
@@ -100,7 +106,7 @@ class _ContactUpdateState extends State<ContactUpdate> {
           Padding(
             padding: textFiledEdgeInsets,
             child: TextField(
-              controller: tfContactLastName,
+              controller: tfLastname,
               decoration: const InputDecoration(
                 hintText: "Last Name",
                 hoverColor: Color.fromARGB(232, 3, 63, 91),
@@ -111,7 +117,7 @@ class _ContactUpdateState extends State<ContactUpdate> {
           Padding(
             padding: textFiledEdgeInsets,
             child: TextField(
-              controller: tfContactNum,
+              controller: tfNum,
               decoration: const InputDecoration(
                 hintText: "Phone (+90 0500 000 00 00) ",
                 hoverColor: Color.fromARGB(232, 3, 63, 91),
@@ -122,7 +128,7 @@ class _ContactUpdateState extends State<ContactUpdate> {
           Padding(
             padding: textFiledEdgeInsets,
             child: TextField(
-              controller: tfContactMail,
+              controller: tfMail,
               decoration: const InputDecoration(
                 hintText: "Email",
                 hoverColor: Color.fromARGB(232, 3, 63, 91),
@@ -134,7 +140,7 @@ class _ContactUpdateState extends State<ContactUpdate> {
             padding: textFiledEdgeInsets,
             child: Expanded(
               child: TextField(
-                controller: tfContactCompany,
+                controller: tfCompany,
                 decoration: const InputDecoration(
                   hintText: "Company",
                   hoverColor: Color.fromARGB(232, 3, 63, 91),
