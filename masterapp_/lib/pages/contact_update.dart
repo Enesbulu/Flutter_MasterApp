@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:masterapp_/pages/homePages.dart';
 import 'package:masterapp_/person.dart';
-// import 'package:masterapp_/person.dart';
 
 class ContactUpdate extends StatefulWidget {
   Person person;
